@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Solvia - Quản lý Tài chính</title>
+    
+    <!-- Link Google Fonts (Giống trang chủ) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 
+      Link đến file CSS CHUNG của bạn 
+      Tất cả các style như navbar, footer, biến màu... sẽ được lấy từ đây.
+    -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 
+      CSS BỔ SUNG: 
+      Các style này chỉ dành riêng cho trang sản phẩm này.
+      Chúng sẽ được tải sau file style.css chính và bổ sung cho nó.
+    -->
+    <style>
+        /* CSS cho khu vực Hero của trang sản phẩm */
+        .product-hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #ffffff 100%);
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-hero .container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero-text .app-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--white-color);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .hero-text .app-icon img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero-text .subtitle {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .hero-text .download-btn {
+            /* Tái sử dụng style của .start-btn từ file css chung */
+            display: inline-flex; /* Dùng inline-flex để căn icon */
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px; /* To hơn một chút */
+            font-size: 18px;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out 0.2s;
+            animation-fill-mode: backwards;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 550px; /* Giới hạn chiều cao ảnh minh họa */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* CSS cho khu vực Tính năng */
+        .features-section {
+            padding: 80px 0;
+            background-color: var(--white-color);
+        }
+        
+        .features-section h2 {
+             /* Sử dụng style h2 chung từ style.css */
+             margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Lưới 3 cột */
+            gap: 30px;
+        }
+
+        .feature-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #eee;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item h3 {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .feature-item p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        /* Icon SVG cho nút download */
+        .download-icon {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* Responsive cho trang sản phẩm */
+        @media (max-width: 992px) {
+            .product-hero .container {
+                flex-direction: column-reverse; /* Đảo ngược, ảnh lên trên */
+                gap: 40px;
+                text-align: center;
+            }
+            .hero-text .app-icon {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-image img {
+                max-height: 450px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr; /* 1 cột trên tablet */
+            }
+        }
+        
+        @media (max-width: 768px) {
+             .hero-text h1 {
+                font-size: 36px;
+             }
+             .hero-text .subtitle {
+                font-size: 18px;
+             }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 
+      THANH ĐIỀU HƯỚNG 
+      Sử dụng chung 100% với trang chủ.
+      Tôi đã cập nhật link cho "Money Solvia" và đổi mục "Phần mềm" thành active.
+    -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"> <!-- Thêm link về trang chủ ở đây (ví dụ: index.html) -->
+            <img src="img/solvia.png" alt="Logo">
+        </a>
+        <div class="menu-toggle">&#9776;</div>
+        <ul class="menu">
+            <li><a href="index.html">Giới thiệu</a></li> <!-- Bỏ active -->
+            <li>
+                <a href="#" class="active">Phần mềm ▾</a> <!-- Thêm active -->
+                <ul>
+                    <li><a href="money_solvia.html">Money Solvia</a></li>
+                    <li><a href="https://dreshitornover234.github.io/Photobooth-Solvia/">Photobooth Solvia</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Hỗ trợ ▾</a>
+                <ul>
+                    <li><a href="mailto:example@gmail.com">Gmail</a></li>
+                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Nội dung chính của trang sản phẩm -->
+    <main class="product-page">
+
+        <!-- === KHU VỰC GIỚI THIỆU CHÍNH (HERO) === -->
+        <section class="product-hero">
+            <div class="container">
+                <!-- Cột nội dung (trái) -->
+                <div class="hero-text">
+                    <div class="app-icon">
+                        <!-- 
+                          THAY THẾ BẰNG ICON CỦA BẠN 
+                          Đây là icon ví (SVG) tôi dùng làm ví dụ
+                        -->
+                         <img src="img/money-removebg-preview.png" alt="Logo">
+                    </div>
+                    <h1>Money Solvia</h1>
+                    <p class="subtitle">
+                        Quản lý tài chính cá nhân chưa bao giờ dễ dàng hơn.
+                        Money Solvia giúp bạn theo dõi chi tiêu, lập ngân sách thông minh và đạt được các mục tiêu tiết kiệm một cách hiệu quả.
+                    </p>
+                    
+                    <!-- NÚT DOWNLOAD (Tái sử dụng class .start-btn) -->
+                    <a href="app-release.apk.sha1" class="start-btn download-btn" download>
+                        <!-- Icon Tải xuống (SVG) -->
+                        <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Tải xuống cho Android
+                    </a>
+                </div>
+
+                <!-- Cột hình ảnh (phải) -->
+                <div class="hero-image">
+                    <!-- 
+                      THAY BẰNG ẢNH CHỤP MÀN HÌNH APP CỦA BẠN 
+                      Đây là ảnh minh họa (placeholder)
+                    -->
+                    <img src="img/screenmoney.png" alt="Ảnh chụp màn hình ứng dụng Money Solvia">
+                </div>
+            </div>
+        </section>
+
+        <!-- === KHU VỰC TÍNH NĂNG === -->
+        <section class="features-section">
+            <div class="container">
+                <h2>Làm chủ tài chính của bạn</h2>
+                <div class="feature-grid">
+                    <!-- Tính năng 1 -->
+                    <div class="feature-item">
+                        <h3>Theo dõi Chi tiêu</h3>
+                        <p>Ghi lại mọi giao dịch hàng ngày một cách nhanh chóng. Phân loại chi tiêu thông minh giúp bạn biết chính xác tiền của mình đang đi đâu.</p>
+                    </div>
+                    <!-- Tính năng 2 -->
+                    <div class="feature-item">
+                        <h3>Lập Ngân sách Thông minh</h3>
+                        <p>Thiết lập hạn mức chi tiêu cho từng danh mục (ăn uống, mua sắm, giải trí...). Money Solvia sẽ cảnh báo khi bạn sắp vượt ngân sách.</p>
+                    </div>
+                    <!-- Tính năng 3 -->
+                    <div class="feature-item">
+                        <h3>Mục tiêu Tiết kiệm</h3>
+                        <p>Dù là mua xe, đi du lịch hay quỹ khẩn cấp, hãy tạo mục tiêu và theo dõi tiến độ tiết kiệm của bạn mỗi ngày để nhanh chóng đạt được ước mơ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 
+      CHÂN TRANG (FOOTER)
+      Sử dụng chung 100% với trang chủ
+    -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <img src="img/Thiết_kế_chưa_có_tên__1_-removebg-preview.png" alt="Logo Solvia" class="footer-logo">
+                    <p>Smart Solutions for Valuable Intelligent Applications</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên kết</h4>
+                    <ul>
+                        <li><a href="index.html">Giới thiệu</a></li>
+                        <li><a href="#software">Phần mềm</a></li>
+                        <li><a href="#">Hỗ trợ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên hệ</h4>
+                    <ul>
+                        <li><a href="mailto:thiensinh3407@gmail.com">Gmail</a></li>
+                        <li><a href="https://www.facebook.com/dres.hitornover.2024" target="_blank">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Solvia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 
+      SCRIPT CHO MENU MOBILE 
+      Sử dụng chung 100% với trang chủ
+    -->
+    <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.menu');
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

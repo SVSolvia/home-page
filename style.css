@@ -1,4 +1,6 @@
 /* --- Cài đặt chung & Biến --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap');
+
 :root {
     --primary-color: #46288f;
     --primary-light: #5e3bbd;
@@ -7,6 +9,10 @@
     --text-light: #555;
     --white-color: #fff;
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    
+    /* Biến phông chữ mới để không lỗi tiếng Việt */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
 }
 
 * {
@@ -20,10 +26,16 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body); /* Đổi sang dùng biến */
     background-color: var(--white-color);
     color: var(--text-dark);
     line-height: 1.6;
+}
+
+/* Ép tất cả các thẻ tiêu đề dùng font Montserrat */
+h1, h2, h3, h4, h5, h6, .logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
 }
 
 .container {
@@ -150,7 +162,7 @@ body {
 
 .logo-big {
     height: 130px;
-   
+    
 }
 
 .slogan {
